@@ -38,7 +38,7 @@ def build_model(MODEL, image_size, train_data_dir, valid_data_dir, lambda_func=N
     valid_generator = val_gen.flow_from_directory(valid_data_dir, (height, width), shuffle=True, 
                                               batch_size=32,class_mode='binary')
     
-    return model
+    return model,train_generator,valid_generator
     
 def show_learning_curve(history):
     plt.figure(1)  
