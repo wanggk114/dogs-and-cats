@@ -6,9 +6,30 @@ from keras.preprocessing.image import *
 from keras.callbacks import *
 from keras.optimizers import *
 from keras.utils import *
+from tqdm import tqdm   #进度条
+from PIL import Image
 
+def build_model(MODEL, image_size, lambda_func=None):
+    #构造模型
+    width = image_size[0]
+    height = image_size[1]
+    x_input = Input((height, width, 3))
+    if lambda_func:
+        x_input = Lambda(lambda_func)(x_input)
+    
+    base_model = MODEL(input_tensor=x_input, weights='imagenet', include_top=False, pooling = 'avg')
+        
+    x = Dropout(0.5)(base_model.output)
+    x = Dense(1, activation='sigmoid',kernel_regularizer=regularizers.l2(0.001))(x)
+    model = Model(base_model.input, x)
+    adam = optimizers.Adam(lr=1e-4, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
+    model.compile(optimizer=adam,
+             loss='binary_crossentropy',
+             metrics=['accuracy'])
+    
+    return model
 
-def build_model(MODEL, image_size, train_data_dir, valid_data_dir, lambda_func=None):
+def build_model_bak(MODEL, image_size, train_data_dir, valid_data_dir, lambda_func=None):
     #构造模型
     width = image_size[0]
     height = image_size[1]
