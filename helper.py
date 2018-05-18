@@ -8,6 +8,7 @@ from keras.optimizers import *
 from keras.utils import *
 from tqdm import tqdm   #进度条
 from PIL import Image
+import pandas as pd
 
 def build_model(MODEL, image_size, lambda_func=None):
     #构造模型
