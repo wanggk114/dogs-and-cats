@@ -9,6 +9,43 @@ from keras.utils import *
 from tqdm import tqdm   #进度条
 from PIL import Image
 import pandas as pd
+import cv2
+
+#image_dir含dog，cat子目录
+def read_images_to_memory(image_dir, width, height, test=False):
+    dog_filenames = os.listdir(image_dir+'/dog') #dog
+    cat_filenames = os.listdir(image_dir+'/cat') #cat
+    print("dog_nums={}, cat_nums={}".format(len(dog_filenames), len(cat_filenames)))
+    if test:
+        n=(len(dog_filenames)+len(cat_filenames))*2//100  #取5%的数据
+    else:
+        n=len(dog_filenames)+len(cat_filenames)
+    print("total images:", n)
+    X = np.zeros((n, width, height, 3), dtype=np.uint8)
+    Y = np.zeros(n, dtype=np.uint8)
+    
+    i=0
+    for filename in tqdm(dog_filenames):
+        fullname=image_dir+'/dog/'+filename
+        img = cv2.imread(fullname)  
+        X[i] = cv2.resize(img, (width, height))  
+        Y[i] = 1
+        i=i+1
+        if test:
+            if i>n//2:
+                break
+    
+    for filename in tqdm(cat_filenames):
+        fullname=image_dir+'/cat/'+filename
+        img = cv2.imread(fullname)  
+        X[i] = cv2.resize(img, (width, height))  
+        Y[i] = 0
+        i=i+1
+        
+        if test:
+            if i==n:
+                break
+    return X, Y
 
 def build_model(MODEL, image_size, lambda_func=None):
     #构造模型
@@ -92,7 +129,7 @@ def lock_layers(model, locked_layer_nums):
     for layer in model.layers[:locked_layer_nums]:  #冻结前N层
         layer.trainable = False
     
-def predict_on_modle(n, width, heigth, test_data_dir, model, weight, output_name):
+def predict_on_model(n, width, heigth, test_data_dir, model, weight, output_name):
     x_test = np.zeros((n,width,heigth,3),dtype=np.uint8)
 
     for i in tqdm(range(n)):
