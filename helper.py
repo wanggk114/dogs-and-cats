@@ -139,6 +139,7 @@ def load_test_data(n, width, heigth, test_data_dir):
     return x_test
 
 def predict_on_model(x_test, model, weight, output_name):
+    n=len(x_test)
     
     model.load_weights(weight)
     y_test = model.predict(x_test, verbose=1)
