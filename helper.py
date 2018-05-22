@@ -128,16 +128,18 @@ def lock_layers(model, locked_layer_nums):
 
     for layer in model.layers[:locked_layer_nums]:  #冻结前N层
         layer.trainable = False
-    
-def predict_on_model(n, width, heigth, test_data_dir, model, weight, output_name):
+
+def load_test_data(n, width, heigth, test_data_dir):
     x_test = np.zeros((n,width,heigth,3),dtype=np.uint8)
 
     for i in tqdm(range(n)):
-    #for i in range(n):
         img = load_img(test_data_dir+"/test/"+'/%d.jpg' % (i+1)) 
         x_test[i,:,:,:] = img_to_array(img.resize((width,heigth),Image.ANTIALIAS))
     
-#     x_test = xception.preprocess_input(x_test)
+    return x_test
+
+def predict_on_model(x_test, model, weight, output_name):
+    
     model.load_weights(weight)
     y_test = model.predict(x_test, verbose=1)
     y_test = y_test.clip(min=0.005, max=0.995)
