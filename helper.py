@@ -125,9 +125,10 @@ def show_learning_curve(history):
 def lock_layers(model, locked_layer_nums):
     for i in range(len(model.layers)):
         print(i,model.layers[i].name)
-
+        model.layers[i].trainable = True
+        
     for layer in model.layers[:locked_layer_nums]:  #冻结前N层
-        layer.trainable = False
+        layer.trainable = False   
 
 def load_test_data(n, width, heigth, test_data_dir):
     x_test = np.zeros((n,width,heigth,3),dtype=np.uint8)
