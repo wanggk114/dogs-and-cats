@@ -150,4 +150,22 @@ def predict_on_model(x_test, model, weight, output_name):
     for i in tqdm(range(n)):
         df.set_value(i, 'label', y_test[i])
     df.to_csv(output_name, index=None)
-    df.head(10)
+
+
+def predict_on_model2(x_test, test_dir, batchSize, model, weight, output_name):
+    n=len(x_test)
+    
+    model.load_weights(weight)
+    y_test = model.predict(x_test, verbose=1)
+    y_test = y_test.clip(min=0.005, max=0.995)
+    
+    gen = ImageDataGenerator()
+    test_generator = gen.flow_from_directory(test_dir, (224, 224), shuffle=False, 
+                                         batch_size=batchSize, class_mode=None)
+
+    df = pd.read_csv("sample_submission.csv")
+    for i, fname in enumerate(test_generator.filenames):
+        index = int(fname[fname.rfind('/')+1:fname.rfind('.')])
+        df.set_value(index-1, 'label', y_test[i])
+    
+    df.to_csv(output_name, index=None)
