@@ -47,57 +47,16 @@ def read_images_to_memory(image_dir, width, height, test=False):
                 break
     return X, Y
 
-def build_model(MODEL, image_size, lambda_func=None):
-    #构造模型
-    width = image_size[0]
-    height = image_size[1]
-    x_input = Input((height, width, 3))
-    if lambda_func:
-        x_input = Lambda(lambda_func)(x_input)
-    
-    base_model = MODEL(input_tensor=x_input, weights='imagenet', include_top=False, pooling = 'avg')
-        
-    x = Dropout(0.5)(base_model.output)
-    x = Dense(1, activation='sigmoid',kernel_regularizer=regularizers.l2(0.001))(x)
-    model = Model(base_model.input, x)
-    adam = optimizers.Adam(lr=1e-4, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
-    model.compile(optimizer=adam,
-             loss='binary_crossentropy',
-             metrics=['accuracy'])
-    
-    return model
 
-def build_model_bak(MODEL, image_size, train_data_dir, valid_data_dir, lambda_func=None):
-    #构造模型
-    width = image_size[0]
-    height = image_size[1]
-    x_input = Input((height, width, 3))
-    if lambda_func:
-        x_input = Lambda(lambda_func)(x_input)
+def load_test_data(n, width, heigth, test_data_dir):
+    x_test = np.zeros((n,width,heigth,3),dtype=np.uint8)
+
+    for i in tqdm(range(n)):
+        img = load_img(test_data_dir+"/test/"+'/%d.jpg' % (i+1)) 
+        x_test[i,:,:,:] = img_to_array(img.resize((width,heigth),Image.ANTIALIAS))
     
-    base_model = MODEL(input_tensor=x_input, weights='imagenet', include_top=False, pooling = 'avg')
-        
-    x = Dropout(0.5)(base_model.output)
-    x = Dense(1, activation='sigmoid',kernel_regularizer=regularizers.l2(0.001))(x)
-    model = Model(base_model.input, x)
-    adam = optimizers.Adam(lr=1e-4, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
-    model.compile(optimizer=adam,
-             loss='binary_crossentropy',
-             metrics=['accuracy'])
-    
-    gen = ImageDataGenerator(rotation_range=40,  #旋转数据增强
-                            width_shift_range=0.2,
-                            height_shift_range=0.2,
-                            shear_range=0.2,
-                            zoom_range=0.2,
-                            horizontal_flip=True)
-    val_gen = ImageDataGenerator()
-    train_generator = gen.flow_from_directory(train_data_dir, (height, width), shuffle=True, 
-                                              batch_size=64,class_mode='binary')
-    valid_generator = val_gen.flow_from_directory(valid_data_dir, (height, width), shuffle=True, 
-                                              batch_size=32,class_mode='binary')
-    
-    return model,train_generator,valid_generator
+    return x_test
+
     
 def show_learning_curve(history):
     plt.figure(1)  
@@ -125,19 +84,10 @@ def show_learning_curve(history):
 def lock_layers(model, locked_layer_nums):
     for i in range(len(model.layers)):
         print(i,model.layers[i].name)
-        model.layers[i].trainable = True
+        model.layers[i].trainable = True  #刚开始没有这行处理，导致lock_layers有误
         
     for layer in model.layers[:locked_layer_nums]:  #冻结前N层
         layer.trainable = False   
-
-def load_test_data(n, width, heigth, test_data_dir):
-    x_test = np.zeros((n,width,heigth,3),dtype=np.uint8)
-
-    for i in tqdm(range(n)):
-        img = load_img(test_data_dir+"/test/"+'/%d.jpg' % (i+1)) 
-        x_test[i,:,:,:] = img_to_array(img.resize((width,heigth),Image.ANTIALIAS))
-    
-    return x_test
 
 def predict_on_model(x_test, model, weight, output_name):
     n=len(x_test)
