@@ -26,24 +26,27 @@
 p2,p3均为aws上的实例
 
 ## 预测结果	
-  - pred-xception-freeze-2.csv	Xception放开输出层的预测结果<br>
-  - pred-xception-fine-tuning-1.csv	Xception冻结前97层的预测结果<br>
-  - pred-InceptonResNetV2-base-tuning-v4.csv	InceptonResNetV2 v4只训练输出层<br>
-  - pred-InceptonResNetV2-fine-tuning-1-v4.csv	InceptonResNetV2 v4冻结前698层<br>
-  - pred-InceptonResNetV2-fine-tuning-2-v4.csv	InceptonResNetV2 v4冻结前618层<br>
-  - pred-InceptonResNetV2-fine-tuning-3-v4.csv	InceptonResNetV2 v4冻结前499层<br>
-  - pred-InceptonResNetV2-base-tuning-v3.csv	InceptonResNetV2 v5只训练输出层<br>
-  - pred-InceptonResNetV2-fine-tuning-1-v5.csv	InceptonResNetV2 v5冻结前698层<br>
-  - pred-InceptonResNetV2-fine-tuning-2-v5.csv	InceptonResNetV2 v5冻结前618层<br>
-  - pred-InceptonResNetV2-fine-tuning-3-v5.csv	InceptonResNetV2 v5冻结前746层<br>
-  - pred-ResNet50-base-tuning-v1.csv	ResNet50只训练输出层<br>
-  - pred-ResNet50-fine-tuning-1-v1.csv	ResNet50冻结前164层<br>
-  - pred-ResNet50-fine-tuning-2-v1.csv	ResNet50冻结前142层<br>
-  - pred-ResNet50-fine-tuning-3-v1.csv	ResNet50冻结前112层<br>
-  - pred-Merge-tuning-v1.csv	ImageNet模型融合，算法：adadelta<br>
-  - pred-Merge-tuning-2-v1.csv	ImageNet模型融合，算法：Adam<br>
-  - pred-Merge-tuning-v2.csv	fine-tuning模型融合，算法：adadelta<br>
-  - pred-Merge-tuning-2-v2.csv	fine-tuning模型融合，算法：Adam<br>   
+|  文件名 | 文件说明 | 
+| --- | --- |
+| pred-xception-freeze-2.csv | 	Xception放开输出层的预测结果 | 
+| pred-xception-fine-tuning-1.csv | 	Xception冻结前97层的预测结果 | 
+| pred-InceptonResNetV2-base-tuning-v4.csv | 	InceptonResNetV2 v4只训练输出层 | 
+| pred-InceptonResNetV2-fine-tuning-1-v4.csv | 	InceptonResNetV2 v4冻结前698层 | 
+| pred-InceptonResNetV2-fine-tuning-2-v4.csv | 	InceptonResNetV2 v4冻结前618层 | 
+| pred-InceptonResNetV2-fine-tuning-3-v4.csv | 	InceptonResNetV2 v4冻结前499层 | 
+| pred-InceptonResNetV2-base-tuning-v3.csv | 	InceptonResNetV2 v5只训练输出层 | 
+| pred-InceptonResNetV2-fine-tuning-1-v5.csv | 	InceptonResNetV2 v5冻结前698层 | 
+| pred-InceptonResNetV2-fine-tuning-2-v5.csv | 	InceptonResNetV2 v5冻结前618层 | 
+| pred-InceptonResNetV2-fine-tuning-3-v5.csv | 	InceptonResNetV2 v5冻结前746层 | 
+| pred-ResNet50-base-tuning-v1.csv | 	ResNet50只训练输出层 | 
+| pred-ResNet50-fine-tuning-1-v1.csv | 	ResNet50冻结前164层 | 
+| pred-ResNet50-fine-tuning-2-v1.csv | 	ResNet50冻结前142层 | 
+| pred-ResNet50-fine-tuning-3-v1.csv | 	ResNet50冻结前112层 | 
+| pred-Merge-tuning-v1.csv | 	ImageNet模型融合，算法：adadelta | 
+| pred-Merge-tuning-2-v1.csv | 	ImageNet模型融合，算法：Adam | 
+| pred-Merge-tuning-v2.csv | 	fine-tuning模型融合，算法：adadelta | 
+| pred-Merge-tuning-2-v2.csv | 	fine-tuning模型融合，算法：Adam |   
+
  ## 模型图	
     model_Xception.png	迁移学习中，在Xception基础上搭建的模型图<br>            
     model_InceptionResNetV2.png	迁移学习中，在InceptionResNetV2基础上搭建的模型图<br>   
