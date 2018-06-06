@@ -7,20 +7,21 @@
 | 执行顺序|  文件名 | 文件说明 | 机器 | 大概执行时间 |
 | --- | --- | --- | --- | --- | 
 | 1 | [pre_dir_process.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/pre_dir_process.ipynb) |	建文件目录的代码 | p2 | 2min |
-| 2 | [pick_up_anormal_images_batch_cat.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/pick_up_anormal_images_batch_cat.ipynb) |	挑选训练集cat目录中异常图片的代码 | p2 | 15min |
-| 3 | [pick_up_anormal_images_batch_dog.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/pick_up_anormal_images_batch_dog.ipynb) |	挑选训练集dog目录中异常图片的代码 | p2 | 15min |
-| 4 | [prep_data_process.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/prep_data_process.ipynb) |	数据预处理的代码 | p2 | 1min |
-| 5 | [visuals.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/visuals.ipynb) |	探索性可视化的代码  | p2 | 5min |
-| 6 | [keras_fine_tuning_Xception.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tuning_Xception.ipynb) |	Xception迁移学习的代码   | p2 | 130min |
+| / | [pick_up_anormal_images_batch_cat.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/pick_up_anormal_images_batch_cat.ipynb) |	挑选训练集cat目录中异常图片的代码 | p2 | 15minX2 |
+| / | [pick_up_anormal_images_batch_dog.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/pick_up_anormal_images_batch_dog.ipynb) |	挑选训练集dog目录中异常图片的代码 | p2 | 15minX2 |
+| 2 | [pick_up_anormal_images.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/pick_up_anormal_images.ipynb) |	挑选训练集中的异常图片 | p2 | 35min |
+| 3 | [prep_data_process.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/prep_data_process.ipynb) |	数据预处理的代码 | p2 | 1min |
+| 4 | [visuals.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/visuals.ipynb) |	探索性可视化的代码  | p2 | 5min |
+| 5 | [keras_fine_tuning_Xception.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tuning_Xception.ipynb) |	Xception迁移学习的代码   | p2 | 130min |
 | / | [keras_fine_tunig_InceptonResNetV2.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tunig_InceptonResNetV2.ipynb) |	InceptonResNetV2迁移学习 v1   | / | / |
 | / | [keras_fine_tunig_InceptonResNetV2-memory.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tunig_InceptonResNetV2-memory.ipynb) |	InceptonResNetV2迁移学习 v2   | / | / |
 | / | [keras_fine_tunig_InceptonResNetV2-memory-v3.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tunig_InceptonResNetV2-memory-v3.ipynb) |	InceptonResNetV2迁移学习 v3   | / | / |
-| 7 | [keras_fine_tunig_InceptonResNetV2-memory-v4.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tunig_InceptonResNetV2-memory-v4.ipynb) |	InceptonResNetV2迁移学习 v4   | p3 | 90min |
-| 8 | [keras_fine_tunig_InceptonResNetV2-memory-v5.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tunig_InceptonResNetV2-memory-v5.ipynb) |	InceptonResNetV2迁移学习 v5   | p3 | 90min |
-| 9 | [keras_fine_tunig_ResNet50-v1.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tunig_ResNet50-v1.ipynb) |	ResNet50迁移学习的代码   | p3 | 40min |
-| 10 | [keras_merge_3_app.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_merge_3_app.ipynb) |	融合模型，加载keras预训练权重   | p2 | 40min |
-| 11 | [keras_merge_3_app_by_tuning.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_merge_3_app_by_tuning.ipynb) |	融合模型，加载迁移学习保存的预训练权重   | p2 | 40min |
-| 12 | [keras_merge_3_app_predict.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_merge_3_app_predict.ipynb) |	鲁棒性验证代码   | p2 | 5min |
+| 6 | [keras_fine_tunig_InceptonResNetV2-memory-v4.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tunig_InceptonResNetV2-memory-v4.ipynb) |	InceptonResNetV2迁移学习 v4   | p3 | 90min |
+| 7 | [keras_fine_tunig_InceptonResNetV2-memory-v5.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tunig_InceptonResNetV2-memory-v5.ipynb) |	InceptonResNetV2迁移学习 v5   | p3 | 90min |
+| 8 | [keras_fine_tunig_ResNet50-v1.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_fine_tunig_ResNet50-v1.ipynb) |	ResNet50迁移学习的代码   | p3 | 40min |
+| 9 | [keras_merge_3_app.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_merge_3_app.ipynb) |	融合模型，加载keras预训练权重   | p2 | 40min |
+| 10 | [keras_merge_3_app_by_tuning.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_merge_3_app_by_tuning.ipynb) |	融合模型，加载迁移学习保存的预训练权重   | p2 | 40min |
+| 11 | [keras_merge_3_app_predict.ipynb](https://github.com/wanggk114/dogs-and-cats/blob/master/keras_merge_3_app_predict.ipynb) |	鲁棒性验证代码   | p2 | 5min |
 | / | [helper.py](https://github.com/wanggk114/dogs-and-cats/blob/master/helper.py) | 辅助函数  |  | / |
  
 
